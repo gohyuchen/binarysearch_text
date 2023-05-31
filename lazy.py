@@ -10,13 +10,19 @@ def main():
     2 options: response, no response
 
     wait for timeout ~3s to 'no response'
-    press arrowkey or enterkey to 'respond'
+    press arrowkey or enterkey to 'response'
+
+    Spacebar: no response (timeout) all the way
+    Backpace: response all the way
     """
-    count = 3
+    count = 30
     array = []
-    alphabets = [' ','A','B','C','D','E','F','G','H','I','J','K','L',
-                'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-    print('BEGIN! A->L = 1, M->Z = 0')
+    alphabets = [' ',
+                'A','B','C','D','E','F','G','H','I','J','K','L','M',
+                'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                'BACK'
+                ]
+    print('BEGIN! A->M = 1, N->Z = 0')
 
     while count > 0:
         while len(alphabets) > 1:
@@ -31,13 +37,19 @@ def main():
                 k = len(alphabets) // 2
                 alphabets = alphabets[k:]
                 print('Current list =',alphabets)
+        
+        if alphabets == ['BACK']:
+            array.pop()
+        else: array += alphabets
 
-        array += alphabets
-        alphabets = [' ','A','B','C','D','E','F','G','H','I','J','K','L',
-                    'M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+        alphabets = [' ',
+                    'A','B','C','D','E','F','G','H','I','J','K','L','M',
+                    'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                    'BACK'
+                    ]
         count -=1
         print('Current word =', ''.join(array))
-        print('RESET! A->L = 1, M->Z = 0')
+        print('RESET! A->M = 1, N->Z = 0')
 
 
 if __name__ == "__main__":
